@@ -6,26 +6,25 @@
     "noEmit": true,
     "noImplicitReturns": true,
     "noImplicitAny": true,
-    "module": "commonjs",
+    "module": "esnext",
     "moduleDetection": "force",
-    "moduleResolution": "node",
-    "target": "es5",
+    "moduleResolution": "bundler",
+    "target": "es2020",
+    "lib": ["es2020", "DOM", "DOM.Iterable"],
     "allowJs": true,
-    "jsx": "react",
+    "jsx": "react-jsx",
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["./src/*"]
     }
   },
   "include": [
     "src/**/*",
-    "tailwind.config.ts",
-    ".eslintrc.js",
+    ".eslintrc.js"
   ],
   "exclude": [
     "node_modules",
-    "postcss.config.js",
+    "postcss.config.js"
   ]
 }

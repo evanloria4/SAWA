@@ -36,7 +36,7 @@ module.exports = {
   ],
   rules: {
     // Add any custom rules here
-    'react/prop-types/': 'off', // turn off prop types since we're using Typescript
+    'react/prop-types': 'off',
     '@typescript-eslint/no-var-requires': 'off',
     'no-console': 'off',
   },
