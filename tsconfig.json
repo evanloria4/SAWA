@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "strict": true,
+    "noEmit": true,
+    "noImplicitReturns": true,
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "moduleDetection": "force",
+    "moduleResolution": "node",
+    "target": "es5",
+    "allowJs": true,
+    "jsx": "react",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "include": [
+    "src/**/*",
+    "tailwind.config.ts",
+    ".eslintrc.js",
+  ],
+  "exclude": [
+    "node_modules",
+    "postcss.config.js",
+  ]
+}
