@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(express.static(DIST_DIR));
 
 // SPA fallback — serve index.html for all non-API routes
-app.get('*', (_req, res) => {
+app.get('/{*splat}', (_req, res) => {
   res.sendFile(path.join(DIST_DIR, 'index.html'));
 });
 
