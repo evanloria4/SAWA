@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-
 const vendors = ['BTL', 'Lumenis', 'Hydrafacial', 'Tixel', 'InMode', 'Cartessa'];
 
 const memberPerks = [
@@ -116,9 +115,7 @@ export default function Vendors() {
               <div className="space-y-5">
                 {pillars.map((p) => (
                   <div key={p.label} className="flex items-start gap-3 text-left">
-                    <div className={`w-10 h-10 rounded-full ${p.color} flex items-center justify-center shrink-0`}>
-                      <span className="text-white text-[10px] font-bold">{p.label[0]}</span>
-                    </div>
+                    <div className="w-2 h-2 rounded-full bg-gold shrink-0 mt-1.5" />
                     <div>
                       <p className="text-[11px] font-bold tracking-widest text-gold">{p.label}</p>
                       <p className="text-xs text-white/60">{p.desc}</p>
@@ -146,6 +143,7 @@ export default function Vendors() {
               </Link>
             </div>
           </div>
+
         </div>
       </section>
 
