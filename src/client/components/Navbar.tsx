@@ -7,6 +7,7 @@ const navLinks = [
     dropdown: [
       { label: 'About SAWA', to: '/about' },
       { label: 'Brandi LaBruzzo, J.D.', to: '/about/brandi' },
+      { label: 'Dr. Lee Lenahan', to: '/about/dr-lenahan' },
       { label: 'Christy Lenahan, APRN', to: '/about/christy' },
       { label: 'Meet Martha P.', to: '/about/martha' },
     ],
