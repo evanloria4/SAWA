@@ -3,12 +3,15 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec \"ts-node --project tsconfig.server.json\" src/server/index.ts --watch src/server",
-    "build:prod": "webpack --mode production",
+    "build": "npm run build:client && tsc --project tsconfig.build.json",
+    "serve": "node dist/server/index.js",
+    "build:client": "webpack --mode production",
+    "build:prod": "npm run build",
     "build:dev": "webpack --watch --mode development",
     "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
     "dev:client": "webpack serve --config webpack.config.js --mode development",
-    "dev:server": "nodemon --exec \"ts-node --project tsconfig.server.json\" src/server/index.ts --watch src/server"
+    "dev:server": "nodemon --exec \"ts-node --project tsconfig.server.json\" src/server/index.ts --watch src/server",
+    "start": "npm run build && npm run serve"
   },
   "keywords": [],
   "author": "",
