@@ -60,7 +60,7 @@ export default function Navbar() {
             <div>
               <div className="text-[26px] font-bold text-navy tracking-widest leading-none font-serif">SAWA</div>
               <div className="text-[8px] text-navy/60 tracking-wider leading-tight uppercase mt-0.5">
-                Southeast Aesthetic &<br />Wellness Association
+                Southern Aesthetics and<br />Wellness Association
               </div>
             </div>
             <svg className="w-5 h-5 mt-0.5 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">

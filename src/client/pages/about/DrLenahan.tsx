@@ -55,7 +55,7 @@ export default function DrLenahan() {
               FOUNDING MEMBER, BOARD MEMBER &amp; MEDICAL DIRECTOR
             </p>
             <p className="text-sm font-semibold tracking-wider text-navy/60 uppercase mb-8">
-              Southeast Aesthetics &amp; Wellness Association
+              Southern Aesthetics and Wellness Association
             </p>
 
             <p className="text-gray-600 leading-relaxed mb-4">

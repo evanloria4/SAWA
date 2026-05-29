@@ -12,7 +12,7 @@ export default function Footer() {
               <div>
                 <div className="text-2xl font-bold tracking-widest font-serif leading-none">SAWA</div>
                 <div className="text-[8px] text-white/50 tracking-wider uppercase leading-tight mt-0.5">
-                  Southeast Aesthetic &<br />Wellness Association
+                  Southern Aesthetics and<br />Wellness Association
                 </div>
               </div>
               <svg className="w-5 h-5 mt-0.5 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -95,7 +95,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-white/10 mt-10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-white/35">
-          <span>© {new Date().getFullYear()} Southeast Aesthetic &amp; Wellness Association. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} Southern Aesthetics and Wellness Association. All rights reserved.</span>
           <span>EDUCATE · ADVOCATE · COLLABORATE · ELEVATE</span>
         </div>
       </div>

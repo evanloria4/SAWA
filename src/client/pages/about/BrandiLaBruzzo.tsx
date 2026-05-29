@@ -64,12 +64,12 @@ export default function BrandiLaBruzzo() {
             <div className="w-16 h-px bg-gold mb-3" />
             <p className="text-[11px] font-bold tracking-widest text-gold mb-1">FOUNDER, PRESIDENT &amp; CEO</p>
             <p className="text-sm font-semibold tracking-wider text-navy/60 uppercase mb-8">
-              Southeast Aesthetics &amp; Wellness Association
+              Southern Aesthetics and Wellness Association
             </p>
 
             <p className="text-gray-600 leading-relaxed mb-4">
               Brandi LaBruzzo is the Founder, President, and CEO of the{' '}
-              <strong className="text-navy">Southeast Aesthetics &amp; Wellness Association</strong>, where she leads the
+              <strong className="text-navy">Southern Aesthetics and Wellness Association</strong>, where she leads the
               organization's mission to support, educate, and strengthen independent aesthetics, wellness, and healthcare
               practices throughout the region.
             </p>
@@ -131,7 +131,7 @@ export default function BrandiLaBruzzo() {
               growth, protect assets, ensure compliance, and preserve wealth for the future.
             </p>
             <p>
-              Through the <strong className="text-navy">Southeast Aesthetics &amp; Wellness Association</strong>, Brandi
+              Through the <strong className="text-navy">Southern Aesthetics and Wellness Association</strong>, Brandi
               brings together her legal background, business expertise, and passion for advocacy to create a stronger
               network for healthcare and wellness professionals. Her vision is to empower members through education,
               collaboration, compliance support, and access to industry-leading resources—so they can continue delivering
