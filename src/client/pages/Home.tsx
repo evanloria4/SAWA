@@ -69,21 +69,27 @@ export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-cream">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 py-16 md:py-24 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <div>
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-[3.25rem] text-navy leading-tight mb-6">
+      <section
+        className="relative min-h-[90vh] flex items-center bg-slate-700 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: 'url(/assets/hero.jpg)' }}
+      >
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-navy/60" />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 lg:px-12 py-24 w-full">
+          <div className="max-w-2xl">
+            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-white leading-tight mb-6">
               Elevating{' '}
-              <span className="font-script italic font-normal">Aesthetics &amp; Wellness</span>{' '}
+              <span className="font-script italic font-normal text-white">Aesthetics &amp; Wellness</span>{' '}
               Together.
             </h1>
             <div className="w-20 h-px bg-gold mb-6" />
-            <p className="text-gray-600 text-lg leading-relaxed mb-3">
+            <p className="text-white/80 text-lg leading-relaxed mb-3">
               SAWA is the premier association supporting NPs, PAs, physicians, and{' '}
               <span className="text-gold font-medium">Aesthetics</span> &amp;{' '}
               <span className="text-gold font-medium">Wellness</span> providers across the Southeast.
             </p>
-            <p className="font-script italic text-navy/50 text-xl mb-10">
+            <p className="font-script italic text-white/60 text-xl mb-10">
               Resources. Relationships. Advocacy. Confidence.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
@@ -95,9 +101,9 @@ export default function Home() {
               </Link>
               <Link
                 to="/membership/benefits"
-                className="border border-navy/25 text-navy font-semibold text-xs px-8 py-4 hover:bg-white transition-colors flex items-center justify-center gap-2.5"
+                className="border border-white/40 text-white font-semibold text-xs px-8 py-4 hover:bg-white/10 transition-colors flex items-center justify-center gap-2.5"
               >
-                <span className="w-6 h-6 rounded-full border border-navy/30 flex items-center justify-center">
+                <span className="w-6 h-6 rounded-full border border-white/40 flex items-center justify-center">
                   <svg className="w-2.5 h-2.5 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M8 5v14l11-7z" />
                   </svg>
@@ -106,23 +112,15 @@ export default function Home() {
               </Link>
             </div>
           </div>
+        </div>
 
-          {/* Hero image placeholder */}
-          <div className="relative rounded-sm overflow-hidden aspect-[4/5] max-h-[560px] bg-slate-200 flex items-center justify-center">
-            <div className="text-center text-slate-400">
-              <svg className="w-12 h-12 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
-              <p className="text-sm">Hero Image</p>
-            </div>
-            <div className="absolute bottom-6 right-6 bg-white/90 p-4 text-right shadow">
-              <p className="text-[10px] font-bold tracking-widest text-navy/60">AESTHETICS</p>
-              <p className="text-[10px] font-bold tracking-widest text-navy/60">&amp; WELLNESS</p>
-              <div className="w-full h-px bg-gold/40 my-2" />
-              <p className="text-[10px] tracking-widest text-navy/50">CONFIDENCE</p>
-              <p className="text-[10px] tracking-widest text-navy/50">INSIDE &amp; OUT</p>
-            </div>
-          </div>
+        {/* Floating badge */}
+        <div className="absolute bottom-8 right-8 bg-white/10 backdrop-blur-sm border border-white/20 p-4 text-right hidden md:block">
+          <p className="text-[10px] font-bold tracking-widest text-white/80">AESTHETICS</p>
+          <p className="text-[10px] font-bold tracking-widest text-white/80">&amp; WELLNESS</p>
+          <div className="w-full h-px bg-gold/60 my-2" />
+          <p className="text-[10px] tracking-widest text-white/60">CONFIDENCE</p>
+          <p className="text-[10px] tracking-widest text-white/60">INSIDE &amp; OUT</p>
         </div>
       </section>
 
