@@ -1,9 +1,11 @@
 import { useState, FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useAuth } from '../../context/AuthContext';
 
 export default function Login() {
   const navigate = useNavigate();
+  const { refresh } = useAuth();
   const [form, setForm] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -19,6 +21,7 @@ export default function Login() {
 
     try {
       await axios.post('/api/auth/login', form, { withCredentials: true });
+      await refresh();
       navigate('/dashboard');
     } catch (err: any) {
       setError(err.response?.data?.error || 'Something went wrong. Please try again.');

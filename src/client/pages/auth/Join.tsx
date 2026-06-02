@@ -1,9 +1,11 @@
 import { useState, FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useAuth } from '../../context/AuthContext';
 
 export default function Join() {
   const navigate = useNavigate();
+  const { refresh } = useAuth();
   const [form, setForm] = useState({
     firstName: '',
     lastName: '',
@@ -41,6 +43,7 @@ export default function Join() {
         password: form.password,
       }, { withCredentials: true });
 
+      await refresh();
       navigate('/dashboard');
     } catch (err: any) {
       setError(err.response?.data?.error || 'Something went wrong. Please try again.');
