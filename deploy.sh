@@ -11,6 +11,6 @@ echo "Building..."
 npm run build
 
 echo "Restarting PM2..."
-pm2 restart sawa
+pm2 restart SAWA
 
 echo "Done."
