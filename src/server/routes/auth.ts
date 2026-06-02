@@ -138,6 +138,19 @@ router.post('/reset-password', async (req: Request, res: Response): Promise<void
   res.json({ message: 'Password updated successfully' });
 });
 
+// GET /api/auth/me
+router.get('/me', requireAuth, async (req: AuthRequest, res: Response): Promise<void> => {
+  const user = await prisma.user.findUnique({
+    where: { id: req.userId },
+    select: { id: true, email: true, role: true, profile: { select: { firstName: true, lastName: true } } },
+  });
+  if (!user) {
+    res.status(401).json({ error: 'Not authenticated' });
+    return;
+  }
+  res.json(user);
+});
+
 // DELETE /api/auth/account
 router.delete('/account', requireAuth, async (req: AuthRequest, res: Response): Promise<void> => {
   await prisma.user.delete({ where: { id: req.userId } });
