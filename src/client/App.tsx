@@ -8,6 +8,8 @@ import ChristyLenahan from './pages/about/ChristyLenahan';
 import DrLenahan from './pages/about/DrLenahan';
 import Benefits from './pages/membership/Benefits';
 import Vendors from './pages/membership/Vendors';
+import Join from './pages/auth/Join';
+import Login from './pages/auth/Login';
 import Placeholder from './pages/Placeholder';
 
 export default function App() {
@@ -23,6 +25,8 @@ export default function App() {
           <Route path="/about/dr-lenahan" element={<DrLenahan />} />
           <Route path="/membership/benefits" element={<Benefits />} />
           <Route path="/membership/vendors" element={<Vendors />} />
+          <Route path="/join" element={<Join />} />
+          <Route path="/login" element={<Login />} />
           <Route path="*" element={<Placeholder />} />
         </Routes>
       </main>
