@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import ProtectedRoute from './components/ProtectedRoute';
 import Home from './pages/Home';
 import BrandiLaBruzzo from './pages/about/BrandiLaBruzzo';
 import MarthaP from './pages/about/MarthaP';
@@ -30,7 +31,9 @@ export default function App() {
             <Route path="/membership/vendors" element={<Vendors />} />
             <Route path="/join" element={<Join />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+            <Route path="/resources" element={<ProtectedRoute><Placeholder /></ProtectedRoute>} />
+            <Route path="/events" element={<ProtectedRoute><Placeholder /></ProtectedRoute>} />
             <Route path="*" element={<Placeholder />} />
           </Routes>
         </main>
