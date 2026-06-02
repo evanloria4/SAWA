@@ -16,7 +16,6 @@ const navLinks = [
     label: 'MEMBERSHIP',
     dropdown: [
       { label: 'Membership Benefits', to: '/membership/benefits' },
-      { label: 'Join SAWA', to: '/join' },
       { label: 'Vendor Partners', to: '/membership/vendors' },
     ],
   },
