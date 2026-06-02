@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 const navLinks = [
   {
@@ -43,6 +44,13 @@ export default function Navbar() {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [mobileDropdown, setMobileDropdown] = useState<string | null>(null);
   const location = useLocation();
+  const navigate = useNavigate();
+  const { user, logout } = useAuth();
+
+  async function handleLogout() {
+    await logout();
+    navigate('/');
+  }
 
   const closeMobile = () => {
     setMobileOpen(false);
@@ -113,21 +121,43 @@ export default function Navbar() {
 
           {/* CTA buttons */}
           <div className="hidden lg:flex items-center gap-2">
-            <Link
-              to="/join"
-              className="bg-olive text-white text-[11px] font-bold tracking-widest px-5 py-2.5 hover:bg-olive/90 transition-colors"
-            >
-              JOIN SAWA
-            </Link>
-            <Link
-              to="/login"
-              className="border border-navy/25 text-navy text-[11px] font-semibold tracking-widest px-4 py-2.5 hover:bg-gray-50 transition-colors flex items-center gap-1.5"
-            >
-              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-              </svg>
-              MEMBER LOGIN
-            </Link>
+            {user ? (
+              <>
+                <Link
+                  to="/dashboard"
+                  className="border border-navy/25 text-navy text-[11px] font-semibold tracking-widest px-4 py-2.5 hover:bg-gray-50 transition-colors flex items-center gap-1.5"
+                >
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                  DASHBOARD
+                </Link>
+                <button
+                  onClick={handleLogout}
+                  className="bg-olive text-white text-[11px] font-bold tracking-widest px-5 py-2.5 hover:bg-olive/90 transition-colors"
+                >
+                  SIGN OUT
+                </button>
+              </>
+            ) : (
+              <>
+                <Link
+                  to="/join"
+                  className="bg-olive text-white text-[11px] font-bold tracking-widest px-5 py-2.5 hover:bg-olive/90 transition-colors"
+                >
+                  JOIN SAWA
+                </Link>
+                <Link
+                  to="/login"
+                  className="border border-navy/25 text-navy text-[11px] font-semibold tracking-widest px-4 py-2.5 hover:bg-gray-50 transition-colors flex items-center gap-1.5"
+                >
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                  MEMBER LOGIN
+                </Link>
+              </>
+            )}
           </div>
 
           {/* Mobile hamburger */}
@@ -194,12 +224,25 @@ export default function Navbar() {
               </div>
             ))}
             <div className="flex gap-2 px-4 pt-4">
-              <Link to="/join" onClick={closeMobile} className="flex-1 bg-olive text-white text-center text-xs font-bold tracking-widest py-3">
-                JOIN SAWA
-              </Link>
-              <Link to="/login" onClick={closeMobile} className="flex-1 border border-navy/25 text-navy text-center text-xs font-semibold tracking-widest py-3">
-                MEMBER LOGIN
-              </Link>
+              {user ? (
+                <>
+                  <Link to="/dashboard" onClick={closeMobile} className="flex-1 border border-navy/25 text-navy text-center text-xs font-semibold tracking-widest py-3">
+                    DASHBOARD
+                  </Link>
+                  <button onClick={() => { closeMobile(); handleLogout(); }} className="flex-1 bg-olive text-white text-center text-xs font-bold tracking-widest py-3">
+                    SIGN OUT
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link to="/join" onClick={closeMobile} className="flex-1 bg-olive text-white text-center text-xs font-bold tracking-widest py-3">
+                    JOIN SAWA
+                  </Link>
+                  <Link to="/login" onClick={closeMobile} className="flex-1 border border-navy/25 text-navy text-center text-xs font-semibold tracking-widest py-3">
+                    MEMBER LOGIN
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         )}
