@@ -53,9 +53,9 @@ export default function Join() {
     <div className="min-h-screen bg-cream flex">
 
       {/* Left panel — brand */}
-      <div className="hidden lg:flex lg:w-1/2 bg-navy flex-col justify-center px-16">
+      <div className="hidden lg:flex lg:w-1/2 bg-white flex-col justify-center px-16 border-r border-gray-100">
         <p className="text-[11px] font-bold tracking-widest text-gold mb-6">SAWA MEMBERSHIP</p>
-        <h2 className="font-serif text-4xl xl:text-5xl text-white leading-tight mb-4">
+        <h2 className="font-serif text-4xl xl:text-5xl text-navy leading-tight mb-4">
           Join the Premier<br />
           <span className="font-script italic font-normal">Aesthetics &amp; Wellness</span><br />
           Association.
@@ -68,7 +68,7 @@ export default function Join() {
             'Legal counsel at association rates',
             'A thriving community of Southeast providers',
           ].map((item) => (
-            <li key={item} className="flex items-start gap-3 text-white/70 text-sm">
+            <li key={item} className="flex items-start gap-3 text-gray-500 text-sm">
               <span className="text-gold mt-0.5 shrink-0">•</span>
               {item}
             </li>
@@ -100,7 +100,7 @@ export default function Join() {
                   value={form.firstName}
                   onChange={(e) => update('firstName', e.target.value)}
                   className="w-full border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:border-gold"
-                  placeholder="Jane"
+                  placeholder="Johnny"
                 />
               </div>
               <div>
@@ -113,7 +113,7 @@ export default function Join() {
                   value={form.lastName}
                   onChange={(e) => update('lastName', e.target.value)}
                   className="w-full border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:border-gold"
-                  placeholder="Smith"
+                  placeholder="LaBruzzo"
                 />
               </div>
             </div>
@@ -128,7 +128,7 @@ export default function Join() {
                 value={form.email}
                 onChange={(e) => update('email', e.target.value)}
                 className="w-full border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:border-gold"
-                placeholder="jane@mypractice.com"
+                placeholder="johnny@mypractice.com"
               />
             </div>
 
