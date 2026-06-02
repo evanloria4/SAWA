@@ -6,6 +6,7 @@ import { useAuth } from '../../context/AuthContext';
 export default function Join() {
   const navigate = useNavigate();
   const { refresh } = useAuth();
+  const [emailExists, setEmailExists] = useState(false);
   const [form, setForm] = useState({
     firstName: '',
     lastName: '',
@@ -35,6 +36,7 @@ export default function Join() {
     }
 
     setLoading(true);
+    setEmailExists(false);
     try {
       await axios.post('/api/auth/register', {
         firstName: form.firstName,
@@ -46,7 +48,11 @@ export default function Join() {
       await refresh();
       navigate('/dashboard');
     } catch (err: any) {
-      setError(err.response?.data?.error || 'Something went wrong. Please try again.');
+      if (err.response?.status === 409) {
+        setEmailExists(true);
+      } else {
+        setError(err.response?.data?.error || 'Something went wrong. Please try again.');
+      }
     } finally {
       setLoading(false);
     }
@@ -162,6 +168,13 @@ export default function Join() {
                 placeholder="Re-enter password"
               />
             </div>
+
+            {emailExists && (
+              <p className="text-red-600 text-sm">
+                An account with that email already exists.{' '}
+                <Link to="/login" className="underline font-medium">Sign in instead?</Link>
+              </p>
+            )}
 
             {error && (
               <p className="text-red-600 text-sm">{error}</p>
