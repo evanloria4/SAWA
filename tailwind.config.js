@@ -6,10 +6,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        navy: '#1c3347',
-        olive: '#3d5a34',
-        gold: '#c4922a',
-        cream: '#faf8f4',
+        navy: '#1a2e44',
+        olive: '#4a5e3a',
+        gold: '#c4a47a',
+        cream: '#f8f5f0',
       },
       fontFamily: {
         serif: ['"Playfair Display"', 'Georgia', 'serif'],
