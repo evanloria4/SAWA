@@ -11,11 +11,11 @@ const COOKIE_OPTS = {
   httpOnly: true,
   secure: process.env.NODE_ENV === 'production',
   sameSite: 'lax' as const,
-  maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+  maxAge: 24 * 60 * 60 * 1000, // 24 hours
 };
 
 function signToken(userId: string) {
-  return jwt.sign({ userId }, process.env.JWT_SECRET!, { expiresIn: '7d' });
+  return jwt.sign({ userId }, process.env.JWT_SECRET!, { expiresIn: '24h' });
 }
 
 function mailer() {
