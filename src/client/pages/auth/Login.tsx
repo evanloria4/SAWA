@@ -3,11 +3,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../../context/AuthContext';
 
+type LoginError = 'email_not_found' | 'wrong_password' | 'generic' | null;
+
 export default function Login() {
   const navigate = useNavigate();
   const { refresh } = useAuth();
   const [form, setForm] = useState({ email: '', password: '' });
-  const [error, setError] = useState('');
+  const [loginError, setLoginError] = useState<LoginError>(null);
   const [loading, setLoading] = useState(false);
 
   function update(field: string, value: string) {
@@ -16,7 +18,7 @@ export default function Login() {
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    setError('');
+    setLoginError(null);
     setLoading(true);
 
     try {
@@ -24,7 +26,10 @@ export default function Login() {
       await refresh();
       navigate('/dashboard');
     } catch (err: any) {
-      setError(err.response?.data?.error || 'Something went wrong. Please try again.');
+      const status = err.response?.status;
+      if (status === 404) setLoginError('email_not_found');
+      else if (status === 401) setLoginError('wrong_password');
+      else setLoginError('generic');
     } finally {
       setLoading(false);
     }
@@ -53,9 +58,17 @@ export default function Login() {
               required
               value={form.email}
               onChange={(e) => update('email', e.target.value)}
-              className="w-full border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:border-gold"
+              className={`w-full border px-4 py-3 text-sm focus:outline-none focus:border-gold ${
+                loginError === 'email_not_found' ? 'border-red-400' : 'border-gray-300'
+              }`}
               placeholder="johnny@mypractice.com"
             />
+            {loginError === 'email_not_found' && (
+              <p className="text-red-600 text-sm mt-1.5">
+                No account found with that email.{' '}
+                <Link to="/join" className="underline font-medium">Join SAWA?</Link>
+              </p>
+            )}
           </div>
 
           <div>
@@ -72,13 +85,21 @@ export default function Login() {
               required
               value={form.password}
               onChange={(e) => update('password', e.target.value)}
-              className="w-full border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:border-gold"
+              className={`w-full border px-4 py-3 text-sm focus:outline-none focus:border-gold ${
+                loginError === 'wrong_password' ? 'border-red-400' : 'border-gray-300'
+              }`}
               placeholder="Enter your password"
             />
+            {loginError === 'wrong_password' && (
+              <p className="text-red-600 text-sm mt-1.5">
+                Incorrect password.{' '}
+                <Link to="/forgot-password" className="underline font-medium">Forgot your password?</Link>
+              </p>
+            )}
           </div>
 
-          {error && (
-            <p className="text-red-600 text-sm">{error}</p>
+          {loginError === 'generic' && (
+            <p className="text-red-600 text-sm">Something went wrong. Please try again.</p>
           )}
 
           <button
