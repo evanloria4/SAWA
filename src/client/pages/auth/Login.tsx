@@ -1,7 +1,8 @@
-import { useState, FormEvent } from 'react';
+import { useState, FormEvent, useCallback } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../../context/AuthContext';
+import LoginAnimation from '../../components/LoginAnimation';
 
 type LoginError = 'email_not_found' | 'wrong_password' | 'generic' | null;
 
@@ -10,6 +11,7 @@ export default function Login() {
   const { refresh } = useAuth();
   const [form, setForm] = useState({ email: '', password: '' });
   const [loginError, setLoginError] = useState<LoginError>(null);
+  const [showAnimation, setShowAnimation] = useState(false);
   const [loading, setLoading] = useState(false);
 
   function update(field: string, value: string) {
@@ -24,7 +26,7 @@ export default function Login() {
     try {
       await axios.post('/api/auth/login', form, { withCredentials: true });
       await refresh();
-      navigate('/dashboard');
+      setShowAnimation(true);
     } catch (err: any) {
       const status = err.response?.status;
       if (status === 404) setLoginError('email_not_found');
@@ -35,7 +37,11 @@ export default function Login() {
     }
   }
 
+  const handleAnimationComplete = useCallback(() => navigate('/dashboard'), [navigate]);
+
   return (
+    <>
+      {showAnimation && <LoginAnimation onComplete={handleAnimationComplete} />}
     <div className="min-h-screen bg-cream flex items-center justify-center px-6 py-16">
       <div className="w-full max-w-md">
         <p className="text-[11px] font-bold tracking-widest text-gold mb-2">MEMBER SIGN IN</p>
@@ -112,5 +118,6 @@ export default function Login() {
         </form>
       </div>
     </div>
+    </>
   );
 }
