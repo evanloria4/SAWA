@@ -145,32 +145,32 @@ export default function Benefits() {
         </div>
       </section>
 
-      {/* Dark CTA panel */}
-      <section className="bg-navy py-16 px-4 md:px-8">
+      {/* CTA panel */}
+      <section className="bg-cream py-16 px-4 md:px-8">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="font-serif text-3xl md:text-4xl text-white font-bold mb-2">STRONGER TOGETHER.</p>
+          <p className="font-serif text-3xl md:text-4xl text-navy font-bold mb-2">STRONGER TOGETHER.</p>
           <p className="font-script italic text-gold text-3xl md:text-4xl mb-2">ELEVATING AESTHETICS</p>
-          <p className="font-serif text-3xl md:text-4xl text-white font-bold mb-6">AND WELLNESS.</p>
-          <p className="font-script italic text-white/60 text-xl mb-10">Empowering You.</p>
+          <p className="font-serif text-3xl md:text-4xl text-navy font-bold mb-6">AND WELLNESS.</p>
+          <p className="font-script italic text-navy/50 text-xl mb-10">Empowering You.</p>
 
           <div className="flex flex-wrap justify-center gap-6 md:gap-10 mb-12">
             {pillars.map((p) => (
               <div key={p.label} className="flex flex-col items-center gap-2">
-                <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/60 text-lg">
+                <div className="w-12 h-12 rounded-full border border-navy/20 flex items-center justify-center text-navy/50 text-lg">
                   {p.icon}
                 </div>
-                <span className="text-[10px] font-bold tracking-widest text-white/60">{p.label}</span>
+                <span className="text-[10px] font-bold tracking-widest text-navy/50">{p.label}</span>
               </div>
             ))}
           </div>
 
-          <p className="text-[11px] font-bold tracking-widest text-white/50 mb-8">
+          <p className="text-[11px] font-bold tracking-widest text-navy/40 mb-8">
             UNITING PROFESSIONALS. STRENGTHENING PRACTICES. ADVANCING THE FUTURE OF CARE.
           </p>
 
           <Link
             to="/join"
-            className="inline-block bg-gold text-white font-bold tracking-widest text-xs px-10 py-4 hover:bg-gold/90 transition-colors"
+            className="inline-block bg-olive text-white font-bold tracking-widest text-xs px-10 py-4 hover:bg-olive/90 transition-colors"
           >
             JOIN SAWA TODAY
           </Link>
