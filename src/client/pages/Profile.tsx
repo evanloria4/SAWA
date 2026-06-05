@@ -21,6 +21,16 @@ const empty: ProfileData = {
   streetAddress: '', city: '', state: '', zip: '',
 };
 
+function SectionHeader({ label, title }: { label: string; title: string }) {
+  return (
+    <div className="mb-6">
+      <p className="text-[10px] font-bold tracking-widest text-gold mb-1">{label}</p>
+      <h2 className="font-serif text-xl text-navy">{title}</h2>
+      <div className="w-8 h-px bg-gold mt-2" />
+    </div>
+  );
+}
+
 function InfoRow({ label, value }: { label: string; value: string }) {
   return (
     <div>
@@ -140,7 +150,7 @@ export default function Profile() {
         <form onSubmit={handleSubmit} className="max-w-3xl mx-auto px-4 md:px-8 py-12 space-y-10">
 
           <div>
-            <p className="text-[11px] font-bold tracking-widest text-gold mb-5">ACCOUNT INFO</p>
+            <SectionHeader label="CONTACT" title="Account Info" />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <FormField label="FIRST NAME" name="firstName" value={draft.firstName} onChange={handleChange} />
               <FormField label="LAST NAME" name="lastName" value={draft.lastName} onChange={handleChange} />
@@ -153,13 +163,19 @@ export default function Profile() {
                 />
               </div>
               <FormField label="PHONE" name="phone" value={draft.phone} onChange={handleChange} />
+              <div className="md:col-span-2">
+                <FormField label="STREET ADDRESS" name="streetAddress" value={draft.streetAddress} onChange={handleChange} />
+              </div>
+              <FormField label="CITY" name="city" value={draft.city} onChange={handleChange} />
+              <FormField label="STATE" name="state" value={draft.state} onChange={handleChange} />
+              <FormField label="ZIP" name="zip" value={draft.zip} onChange={handleChange} />
             </div>
           </div>
 
           <div className="w-full h-px bg-gray-100" />
 
           <div>
-            <p className="text-[11px] font-bold tracking-widest text-gold mb-5">PRACTICE INFO</p>
+            <SectionHeader label="PROFESSIONAL" title="Practice Info" />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="md:col-span-2">
                 <FormField label="PRACTICE NAME" name="practiceName" value={draft.practiceName} onChange={handleChange} />
@@ -167,20 +183,6 @@ export default function Profile() {
               <FormField label="SPECIALTY" name="specialty" value={draft.specialty} onChange={handleChange} />
               <FormField label="LICENSE NUMBER" name="licenseNumber" value={draft.licenseNumber} onChange={handleChange} />
               <FormField label="LICENSE STATE" name="licenseState" value={draft.licenseState} onChange={handleChange} />
-            </div>
-          </div>
-
-          <div className="w-full h-px bg-gray-100" />
-
-          <div>
-            <p className="text-[11px] font-bold tracking-widest text-gold mb-5">ADDRESS</p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="md:col-span-2">
-                <FormField label="STREET ADDRESS" name="streetAddress" value={draft.streetAddress} onChange={handleChange} />
-              </div>
-              <FormField label="CITY" name="city" value={draft.city} onChange={handleChange} />
-              <FormField label="STATE" name="state" value={draft.state} onChange={handleChange} />
-              <FormField label="ZIP" name="zip" value={draft.zip} onChange={handleChange} />
             </div>
           </div>
 
@@ -206,19 +208,25 @@ export default function Profile() {
         <div className="max-w-3xl mx-auto px-4 md:px-8 py-12 space-y-10">
 
           <div>
-            <p className="text-[11px] font-bold tracking-widest text-gold mb-5">ACCOUNT INFO</p>
+            <SectionHeader label="CONTACT" title="Account Info" />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <InfoRow label="FIRST NAME" value={data.firstName} />
               <InfoRow label="LAST NAME" value={data.lastName} />
               <InfoRow label="EMAIL" value={user?.email ?? ''} />
               <InfoRow label="PHONE" value={data.phone} />
+              <div className="md:col-span-2">
+                <InfoRow label="STREET ADDRESS" value={data.streetAddress} />
+              </div>
+              <InfoRow label="CITY" value={data.city} />
+              <InfoRow label="STATE" value={data.state} />
+              <InfoRow label="ZIP" value={data.zip} />
             </div>
           </div>
 
           <div className="w-full h-px bg-gray-100" />
 
           <div>
-            <p className="text-[11px] font-bold tracking-widest text-gold mb-5">PRACTICE INFO</p>
+            <SectionHeader label="PROFESSIONAL" title="Practice Info" />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="md:col-span-2">
                 <InfoRow label="PRACTICE NAME" value={data.practiceName} />
@@ -226,20 +234,6 @@ export default function Profile() {
               <InfoRow label="SPECIALTY" value={data.specialty} />
               <InfoRow label="LICENSE NUMBER" value={data.licenseNumber} />
               <InfoRow label="LICENSE STATE" value={data.licenseState} />
-            </div>
-          </div>
-
-          <div className="w-full h-px bg-gray-100" />
-
-          <div>
-            <p className="text-[11px] font-bold tracking-widest text-gold mb-5">ADDRESS</p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="md:col-span-2">
-                <InfoRow label="STREET ADDRESS" value={data.streetAddress} />
-              </div>
-              <InfoRow label="CITY" value={data.city} />
-              <InfoRow label="STATE" value={data.state} />
-              <InfoRow label="ZIP" value={data.zip} />
             </div>
           </div>
 
