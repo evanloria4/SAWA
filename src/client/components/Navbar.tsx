@@ -134,6 +134,12 @@ export default function Navbar() {
             {user ? (
               <>
                 <Link
+                  to="/profile"
+                  className="text-[11px] font-semibold tracking-widest text-navy/60 hover:text-navy transition-colors px-1"
+                >
+                  MY PROFILE
+                </Link>
+                <Link
                   to="/dashboard"
                   className="border border-navy/25 text-navy text-[11px] font-semibold tracking-widest px-4 py-2.5 hover:bg-gray-50 transition-colors flex items-center gap-1.5"
                 >
@@ -236,6 +242,9 @@ export default function Navbar() {
             <div className="flex gap-2 px-4 pt-4">
               {user ? (
                 <>
+                  <Link to="/profile" onClick={closeMobile} className="flex-1 border border-navy/25 text-navy text-center text-xs font-semibold tracking-widest py-3">
+                    MY PROFILE
+                  </Link>
                   <Link to="/dashboard" onClick={closeMobile} className="flex-1 border border-navy/25 text-navy text-center text-xs font-semibold tracking-widest py-3">
                     DASHBOARD
                   </Link>
