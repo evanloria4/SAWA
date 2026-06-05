@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 
 const leftColumn = [
   {
@@ -76,6 +77,8 @@ const pillars = [
 ];
 
 export default function Benefits() {
+  const { user } = useAuth();
+
   return (
     <>
       {/* Header */}
@@ -168,12 +171,14 @@ export default function Benefits() {
             UNITING PROFESSIONALS. STRENGTHENING PRACTICES. ADVANCING THE FUTURE OF CARE.
           </p>
 
-          <Link
-            to="/join"
-            className="inline-block bg-olive text-white font-bold tracking-widest text-xs px-10 py-4 hover:bg-olive/90 transition-colors"
-          >
-            JOIN SAWA TODAY
-          </Link>
+          {!user && (
+            <Link
+              to="/join"
+              className="inline-block bg-olive text-white font-bold tracking-widest text-xs px-10 py-4 hover:bg-olive/90 transition-colors"
+            >
+              JOIN SAWA TODAY
+            </Link>
+          )}
         </div>
       </section>
     </>

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
-const navLinks = [
+const sharedNavLinks = [
   {
     label: 'ABOUT',
     dropdown: [
@@ -27,6 +27,15 @@ const navLinks = [
       { label: 'Become a Partner', to: '/physicians/partner' },
     ],
   },
+];
+
+const publicNavLinks = [
+  ...sharedNavLinks,
+  { label: 'CONTACT', to: '/contact' },
+];
+
+const memberNavLinks = [
+  ...sharedNavLinks,
   {
     label: 'RESOURCES',
     dropdown: [
@@ -46,6 +55,7 @@ export default function Navbar() {
   const location = useLocation();
   const navigate = useNavigate();
   const { user, logout } = useAuth();
+  const navLinks = user ? memberNavLinks : publicNavLinks;
 
   async function handleLogout() {
     await logout();
