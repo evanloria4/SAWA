@@ -30,22 +30,15 @@ function AppShell() {
   const [showToast, setShowToast] = useState(false);
   const seenLoggedOut = useRef(false);
   const pendingToast = useRef(false);
-  const lastUserId = useRef<string | null>(null);
 
   // Check profile completeness after login and queue the toast
   useEffect(() => {
     if (loading) return;
 
     if (!user) {
-      if (lastUserId.current) {
-        sessionStorage.removeItem(`profileNudge_${lastUserId.current}`);
-        lastUserId.current = null;
-      }
       seenLoggedOut.current = true;
       return;
     }
-
-    lastUserId.current = user.id;
 
     if (!seenLoggedOut.current) return;
 
