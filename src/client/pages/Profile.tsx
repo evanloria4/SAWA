@@ -160,10 +160,10 @@ export default function Profile() {
 
   return (
     <div className="min-h-screen bg-cream">
-      <section className="bg-white border-b border-gray-100 py-12 px-4 md:px-8">
+      <section className="bg-navy py-12 px-4 md:px-8">
         <div className="max-w-3xl mx-auto">
           <p className="text-[11px] font-bold tracking-widest text-gold mb-2">ACCOUNT</p>
-          <h1 className="font-serif text-3xl md:text-4xl text-navy mb-1">My Profile</h1>
+          <h1 className="font-serif text-3xl md:text-4xl text-white mb-1">My Profile</h1>
           <div className="w-16 h-px bg-gold mt-4" />
         </div>
       </section>
