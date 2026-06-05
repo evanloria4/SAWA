@@ -138,6 +138,33 @@ router.post('/reset-password', async (req: Request, res: Response): Promise<void
   res.json({ message: 'Password updated successfully' });
 });
 
+// GET /api/auth/profile
+router.get('/profile', requireAuth, async (req: AuthRequest, res: Response): Promise<void> => {
+  const profile = await prisma.memberProfile.findUnique({ where: { userId: req.userId } });
+  if (!profile) {
+    res.status(404).json({ error: 'Profile not found' });
+    return;
+  }
+  res.json(profile);
+});
+
+// PATCH /api/auth/profile
+router.patch('/profile', requireAuth, async (req: AuthRequest, res: Response): Promise<void> => {
+  const { firstName, lastName, phone, practiceName, specialty, licenseNumber, licenseState, streetAddress, city, state, zip } = req.body;
+
+  if (!firstName || !lastName) {
+    res.status(400).json({ error: 'First and last name are required' });
+    return;
+  }
+
+  const profile = await prisma.memberProfile.update({
+    where: { userId: req.userId },
+    data: { firstName, lastName, phone, practiceName, specialty, licenseNumber, licenseState, streetAddress, city, state, zip },
+  });
+
+  res.json(profile);
+});
+
 // GET /api/auth/me
 router.get('/me', requireAuth, async (req: AuthRequest, res: Response): Promise<void> => {
   const user = await prisma.user.findUnique({

@@ -14,6 +14,11 @@ enum Role {
   pending
 }
 
+enum MemberType {
+  individual
+  practice
+}
+
 enum MembershipStatus {
   active
   lapsed
@@ -39,6 +44,7 @@ model MemberProfile {
   userId        String   @unique
   firstName     String
   lastName      String
+  memberType    MemberType @default(individual)
   phone         String?
   practiceName  String?
   specialty     String?

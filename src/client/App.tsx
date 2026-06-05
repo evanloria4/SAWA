@@ -13,6 +13,7 @@ import Vendors from './pages/membership/Vendors';
 import Join from './pages/auth/Join';
 import Login from './pages/auth/Login';
 import Dashboard from './pages/Dashboard';
+import Profile from './pages/Profile';
 import Placeholder from './pages/Placeholder';
 
 export default function App() {
@@ -32,6 +33,7 @@ export default function App() {
             <Route path="/join" element={<Join />} />
             <Route path="/login" element={<Login />} />
             <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+            <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
             <Route path="/resources" element={<ProtectedRoute><Placeholder /></ProtectedRoute>} />
             <Route path="/events" element={<ProtectedRoute><Placeholder /></ProtectedRoute>} />
             <Route path="*" element={<Placeholder />} />
